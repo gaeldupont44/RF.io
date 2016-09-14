@@ -53,7 +53,25 @@ exports.emitOff = function(req, res) {
 exports.emitOn = function(req, res) {
 	Receiver.findById(req.params.id, function (err, receiver) {
 	    if(!!err) { return res({error: err}).code(500); }
-	    process.emit(receiver.code_on);
-	    return res().code(204);
-	  });
+	    process.emit(receiver.code_on, function(err) {
+	    	if(!!err) return res({error: "EMIT_ERROR"}).code(500);
+	    	return res().code(204);
+	    });
+	});
+};
+
+exports.received = function(code) {
+	Receiver.findOne({$or : [{code_on: code}, {code_off: code}]}, function (err, receiver) {
+	    if(!!err) { console.error(err); }
+	    if(!!receiver) {
+	    	if(receiver.code_on === code) {
+	    		receiver.state = true;
+	    		receiver.save();
+	    	}
+	    	if(receiver.code_off === code) {
+	    		receiver.state = false;
+	    		receiver.save();
+	    	}
+	    }
+	});
 };
