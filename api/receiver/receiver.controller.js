@@ -62,7 +62,6 @@ exports.emitOn = function(req, res) {
 };
 
 exports.received = function(code) {
-	console.log("received code: " + code);
 	Receiver.findOne({$or : [{code_on: code}, {code_off: code}]}, function (err, receiver) {
 	    if(!!err) { console.error(err); }
 	    if(!!receiver) {

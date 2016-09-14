@@ -29,7 +29,6 @@ exports.emit = function(code, callback) {
 exports.listen = function() {
 	rfSniffer.on('data', function (data) {
 		ctrl.received(data.code);
-		console.log(data);
 		console.log('Code received: '+data.code+' pulse length : '+data.pulseLength);
 	});
 };
