@@ -5,7 +5,6 @@ const process = require('./receiver.process');
 exports.getAll = function(req, res) {
 	Receiver.find({}, function (err, receivers) {
 	    if(!!err) { return res({error: err}).code(500); }
-	    console.log(receivers);
 	    return res(receivers).code(200);
 	  });
 };
@@ -45,8 +44,10 @@ exports.deleteOne = function(req, res) {
 exports.emitOff = function(req, res) {
 	Receiver.findById(req.params.id, function (err, receiver) {
 	    if(!!err) { return res({error: err}).code(500); }
-	    process.emit(receiver.code_off);
-	    return res().code(204);
+	    process.emit(receiver.code_off, function(err) {
+	    	if(!!err) return res({error: "EMIT_ERROR"}).code(500);
+	    	return res().code(204);
+	    });
 	  });
 };
 
@@ -61,6 +62,7 @@ exports.emitOn = function(req, res) {
 };
 
 exports.received = function(code) {
+	console.log("received code: " + code);
 	Receiver.findOne({$or : [{code_on: code}, {code_off: code}]}, function (err, receiver) {
 	    if(!!err) { console.error(err); }
 	    if(!!receiver) {

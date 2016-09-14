@@ -15,7 +15,6 @@ const rfEmitter = rpi433.emitter({
 });
 
 exports.emit = function(code, callback) {
-	console.log(code);
 	rfEmitter.sendCode(code, function(err, stdout) {
 		if(!!err) {
 			console.error(err);
@@ -29,6 +28,7 @@ exports.emit = function(code, callback) {
 
 exports.listen = function() {
 	rfSniffer.on('data', function (data) {
+		ctrl.received(data.code);
 		console.log(data);
 		console.log('Code received: '+data.code+' pulse length : '+data.pulseLength);
 	});

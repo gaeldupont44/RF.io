@@ -8,7 +8,7 @@ angular.module('RFio')
     var socket;
     
     function connect() {
-    	ioSocket = io((API.Host || ""), {
+    	ioSocket = io((API.Host ? API.Host + (API.Port ? ":" + API.Port : "") : ""), {
 	      path: '/socket.io-client'
 	    });
 	    
@@ -38,7 +38,6 @@ angular.module('RFio')
          * Syncs item creation/updates on 'model:save'
          */
         socket.on(modelName + ':save', function (item) {
-        	console.log(item);
           var oldItem = _.find(array, {_id: item._id});
           var index = array.indexOf(oldItem);
           var event = 'created';

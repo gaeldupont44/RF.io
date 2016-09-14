@@ -36,6 +36,7 @@ angular.module('RFio.receivers')
   	ReceiversService.get()
   		.then(function(receivers) {
   			vm.receivers = receivers;
+  			ReceiversService.syncUpdates(vm.receivers);
   		})
   		.finally(function() {
   			LoaderService.hide();
