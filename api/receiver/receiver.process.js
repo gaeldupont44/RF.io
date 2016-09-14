@@ -22,6 +22,7 @@ exports.emit = function(code, callback) {
 			callback(err);
 		} else {
 			console.log(stdout);
+			callback();
 		}
 	});
 };

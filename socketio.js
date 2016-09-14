@@ -10,13 +10,7 @@ function onDisconnect(socket) {
 
 // When the user connects.. perform this
 function onConnect(socket, users) {
-  // When the client emits 'info', this listens and executes
-  socket.on('info', data => {
-    socket.log(JSON.stringify(data, null, 2));
-  });
-  
-  // Insert sockets below
-  //require('../api/th0r/torrent/torrent.socket').register(socket);
+	console.log(socket.address + ': CONNECTED');
 }
 
 module.exports = function(socketio) {
@@ -37,6 +31,6 @@ module.exports = function(socketio) {
 
     // Call onConnect.
     onConnect(socket);
-    console.log(socket.address + ': CONNECTED');
+    
   });
 };
