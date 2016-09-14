@@ -1,3 +1,11 @@
 RF.io
+Radio Frequency In Out
 
-Radio Frequency In Out API and API
+API
+Node.js + mongoDB
+
+APP
+Ionic + Cordova
+
+Dependencies
+ - wiringPi

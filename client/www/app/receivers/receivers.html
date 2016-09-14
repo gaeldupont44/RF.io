@@ -1,0 +1,15 @@
+<ion-view view-title="Récepteurs" id="view-receivers">
+  <ion-content>
+    <ion-list>
+    	<ion-item class="item-receiver" ng-model="receiver.state" ng-repeat="receiver in vm.receivers">
+    		<div class="name" ng-bind="receiver.name"></div>
+    		<div class="switch-container">
+    			<receiver-switch ng-model="receiver"></receiver-switch>
+    		</div>
+    	</ion-item>
+    </ion-list>
+  </ion-content>
+  <ion-footer-bar align-title="center" class="bar-assertive">
+  <h1 ng-click="vm.openNewReceiverModal()" class="title">Nouveau</h1>
+</ion-footer-bar>
+</ion-view>
