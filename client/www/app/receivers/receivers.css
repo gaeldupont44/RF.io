@@ -1,0 +1,13 @@
+#view-receivers .item-receiver .name {
+	font-weight: bold;
+	padding-right: 80px;
+}
+
+#view-receivers .item-receiver .switch-container {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	width: 50px;
+	margin: 1px 15px;
+}

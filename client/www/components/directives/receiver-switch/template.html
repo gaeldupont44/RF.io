@@ -1,0 +1,9 @@
+<div class="receiver-switch" ng-click="vm.change()">
+	<!-- If pictures -->
+	<div class="switch-picture" ng-if="!force-switch && (!!receiver.image_off && !!image.on)">
+		<div></div>
+	</div>
+	
+	<!-- If Not-->
+	<div class="switch-default" ng-class="{'on': !!receiver.state, 'off': !receiver.state }" ng-if="!!force-switch || (!receiver.image_off || !image.on)"></div>
+</div>
