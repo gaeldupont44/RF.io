@@ -7,6 +7,7 @@ function ReceiversService(HttpService, SocketioService) {
 		create: create,
 		delete: del,
 		get: get,
+		update: update,
 		syncUpdates: syncUpdates,
 		unsyncUpdates: unsyncUpdates
 	};
@@ -21,6 +22,10 @@ function ReceiversService(HttpService, SocketioService) {
 	
 	function get() {
 		return HttpService.get(API.Routes.Receivers);
+	}
+	
+	function update(data) {
+		return HttpService.put(API.Routes.Receivers, {}, data);
 	}
 	
 	function syncUpdates(receivers){
