@@ -48,7 +48,7 @@ function HttpService($http) {
 				});
 			}
 		}
-		return url;
+		return (API.Host ? API.Host + (API.Port ? ":" + API.Port : "") : "") + url;
 	}
 	
   	function post(url, params, data){
