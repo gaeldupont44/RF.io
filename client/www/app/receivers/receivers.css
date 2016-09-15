@@ -1,4 +1,9 @@
+#view-receivers .item-receiver {
+	padding: 0;
+}
+
 #view-receivers .item-receiver .name {
+	padding: 16px;
 	font-weight: bold;
 	padding-right: 80px;
 }

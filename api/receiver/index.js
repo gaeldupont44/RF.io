@@ -29,6 +29,11 @@ var routes = [
 		    handler: controller.createOne
 		},
 		{
+		    method: 'PUT',
+		    path: '/api/receiver',
+		    handler: controller.updateOne
+		},
+		{
 		    method: 'DELETE',
 		    path: '/api/receiver/{id}',
 		    handler: controller.deleteOne

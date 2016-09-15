@@ -1,5 +1,5 @@
 var API = {
-	Host: "gaeldupont.io",
+	Host: "http://gaeldupont.io",
 	Port: 8888,
 	Routes: {
 		Check: "/api/check",
