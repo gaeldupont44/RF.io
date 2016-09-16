@@ -21,9 +21,17 @@ module.exports = {
           process.env.OPENSHIFT_APP_NAME ||
           'mongodb://localhost/RF-io'
   },
+  
   // GPIO pin
   pin: {
   	emitter: process.env.PIN_EMITTER || 3,
 	receiver:  process.env.PIN_RECEIVER || 2
+  },
+  
+  // Receive and emit time (in ms)
+  time: {
+  	debounceDelay: process.env.DEBOUNCE_DELAY || 400,
+  	pulseLength: process.env.PULSE_LENGTH || 350
   }
+  
 };
