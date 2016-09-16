@@ -1,0 +1,25 @@
+<ion-modal-view>
+  <ion-header-bar>
+    <h1 class="title">Créer un pont</h1>
+    <div class="buttons">
+      <button class="button button-assertive" ng-click="vm.closeCreateBridgeModal()"><i class="ion-close"></i></button>
+    </div>
+  </ion-header-bar>
+  <ion-content>
+    <form ng-submit="vm.create()">
+      <div class="list">
+        <label class="item item-input">
+          <span class="input-label">Code à recevoir</span>
+          <input type="number" ng-model="vm.newBridge.code_receiver">
+        </label>
+        <label class="item item-input">
+          <span class="input-label">Code à émettre</span>
+          <input type="number" ng-model="vm.newBridge.code_emitter">
+        </label>
+        <label class="item">
+          <button class="button button-block button-balanced" ng-disabled="!vm.newBridge.code_receiver || !vm.newBridge.code_emitter" type="submit">Créer</button>
+        </label>
+      </div>
+    </form>
+  </ion-content>
+</ion-modal-view>

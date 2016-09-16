@@ -1,7 +1,7 @@
 <ion-view view-title="Récepteurs" id="view-receivers">
   <ion-content>
     <ion-list>
-    	<ion-item class="item-receiver" ng-model="receiver.state" ng-repeat="receiver in vm.receivers">
+    	<ion-item class="item-receiver" ng-repeat="receiver in vm.receivers">
     		<div class="name" ng-click="vm.openUpdateReceiverModal(receiver._id)" ng-bind="receiver.name"></div>
     		<div class="switch-container">
     			<receiver-switch ng-model="receiver"></receiver-switch>
@@ -9,7 +9,7 @@
     	</ion-item>
     </ion-list>
   </ion-content>
-  <ion-footer-bar align-title="center" class="bar-assertive">
+  <ion-footer-bar align-title="center" class="bar-balanced">
   <h1 ng-click="vm.openCreateReceiverModal()" class="title">Nouveau</h1>
 </ion-footer-bar>
 </ion-view>

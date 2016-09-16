@@ -16,6 +16,7 @@ function onConnect(socket) {
 
 module.exports = function(socketio) {
 	
+  require('./api/bridge/bridge.socketio')(socketio);
   require('./api/receiver/receiver.socketio')(socketio);
   
   socketio.on('connection', function(socket) {

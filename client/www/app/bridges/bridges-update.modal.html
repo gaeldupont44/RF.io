@@ -1,0 +1,28 @@
+<ion-modal-view>
+  <ion-header-bar>
+    <h1 class="title">Modifier un pont</h1>
+    <div class="buttons">
+      <button class="button button-assertive" ng-click="vm.closeUpdateBridgeModal()"><i class="ion-close"></i></button>
+    </div>
+  </ion-header-bar>
+  <ion-content>
+    <form ng-submit="vm.update()">
+      <div class="list">
+        <label class="item item-input">
+          <span class="input-label">Code à recevoir</span>
+          <input type="number" ng-model="vm.bridge.code_receiver">
+        </label>
+        <label class="item item-input">
+          <span class="input-label">Code à émettre</span>
+          <input type="number" ng-model="vm.bridge.code_emitter">
+        </label>
+        <label class="item">
+          <button class="button button-block button-balanced" ng-disabled="!vm.bridge.code_receiver || !vm.bridge.code_emitter" type="submit">Modifier</button>
+        </label>
+      </div>
+    </form>
+    <label class="item">
+      <button class="button button-block button-assertive" ng-click="vm.delete()">Supprimer</button>
+    </label>
+  </ion-content>
+</ion-modal-view>

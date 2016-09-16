@@ -1,7 +1,12 @@
-const ctrl = require('./receiver.controller');
+const _ = require("lodash");
+const receiverCtrl = require('./receiver.controller');
+const bridgeCtrl = require('../bridge/bridge.controller');
 const Config = require('./../../config');
+const noop = require('node-noop').noop;
 const pin_receiver = Config.pin.receiver;
 const pin_emitter = Config.pin.emitter;
+
+var _emits = [];
 
 try {
 
@@ -18,11 +23,13 @@ try {
 	});
 	
 	exports.emit = function(code, callback) {
+		callback = callback || noop;
 		rfEmitter.sendCode(code, function(err, stdout) {
 			if(!!err) {
 				console.error(err);
 				callback(err);
 			} else {
+				_.remove(_emits, function(code_emitter) { return code_emitter === code });
 				callback();
 			}
 		});
@@ -30,7 +37,14 @@ try {
 	
 	exports.listen = function() {
 		rfSniffer.on('data', function (data) {
-			ctrl.received(data.code);
+			receiverCtrl.received(data.code);
+			bridgeCtrl.getEmitterByCodeReceiver(code, function(codes_emitter) {
+				_emits = _.union(_emits, codes_emitter);
+				if(_emits.length > 0) {
+					exports.emit(_emits[0]);
+				}
+			});
+			
 			console.log('Code received: '+data.code+' pulse length : '+data.pulseLength);
 		});
 	};
@@ -42,15 +56,23 @@ try {
 	console.log("Simulating Emitter and Receiver !");
 	
 	exports.emit = function(code, callback) {
+		callback = callback || noop;
+		_.remove(_emits, function(code_emitter) { return code_emitter === code });
 		receive(code);
 		callback();
 	};
 	
-	exports.listen = function() {}
+	exports.listen = noop;
 	
 	function receive(code) {
 		console.log("received code: " + code);
-		ctrl.received(code);
+		receiverCtrl.received(code);
+		bridgeCtrl.getEmitterByCodeReceiver(code, function(codes_emitter) {
+			_emits = _.union(_emits, codes_emitter);
+			if(_emits.length > 0) {
+				exports.emit(_emits[0]);
+			}
+		});
 	}
 	
 }
