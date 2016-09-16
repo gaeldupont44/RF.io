@@ -10,6 +10,7 @@
     
     <link href="components/directives/receiver-switch/style.css" rel="stylesheet">
     
+    <link href="app/bridges/bridges.css" rel="stylesheet">
 	<link href="app/receivers/receivers.css" rel="stylesheet">
     <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
     <link href="css/ionic.app.css" rel="stylesheet">
@@ -28,20 +29,28 @@
     <script src="api.js"></script>
     <script src="app/app.js"></script>
     
+    <!-- Directives -->
+    <script src="components/directives/receiver-switch/controller.js"></script>
+    <script src="components/directives/receiver-switch/directive.js"></script>
+    <script src="components/directives/receiver-switch/service.js"></script>
+    
     
     <!-- Services -->
     <script src="components/services/http.service.js"></script>
     <script src="components/services/loader.service.js"></script>
     <script src="components/services/socketio.service.js"></script>
     
+    
     <!-- Receivers -->
     <script src="app/receivers/receivers.module.js"></script>
     <script src="app/receivers/receivers.service.js"></script>
     <script src="app/receivers/receivers.controller.js"></script>
     
-    <script src="components/directives/receiver-switch/controller.js"></script>
-    <script src="components/directives/receiver-switch/directive.js"></script>
-    <script src="components/directives/receiver-switch/service.js"></script>
+    
+    <!-- Bridges -->
+    <script src="app/bridges/bridges.module.js"></script>
+    <script src="app/bridges/bridges.service.js"></script>
+    <script src="app/bridges/bridges.controller.js"></script>
     
   </head>
 

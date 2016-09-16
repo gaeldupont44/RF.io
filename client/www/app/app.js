@@ -4,7 +4,7 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-angular.module('RFio', ['ionic', 'btford.socket-io', 'RFio.receivers'])
+angular.module('RFio', ['ionic', 'btford.socket-io', 'RFio.bridges', 'RFio.receivers'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -73,12 +73,12 @@ angular.module('RFio', ['ionic', 'btford.socket-io', 'RFio.receivers'])
 		}
 	})
 	
-	.state('app.rooms', {
-		url: '/rooms',
+	.state('app.bridges', {
+		url: '/bridges',
 		views: {
 	      	'menuContent': {
-				templateUrl: 'app/rooms/rooms.html',
-				controller: 'RoomsCtrl',
+				templateUrl: 'app/bridges/bridges.html',
+				controller: 'BridgesCtrl',
 				controllerAs: 'vm'
 			}
 		}
