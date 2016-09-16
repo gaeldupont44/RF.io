@@ -2,7 +2,7 @@
 'use strict';
 
 angular.module('RFio')
-.factory('SocketioService', function(socketFactory) {
+.factory('SocketioService', function(socketFactory, $rootScope) {
     // socket.io now auto-configures its connection when we ommit a connection url
     var ioSocket;
     var socket;
@@ -13,6 +13,11 @@ angular.module('RFio')
 	    });
 	    
 	    socket = socketFactory({ ioSocket:ioSocket });
+	    
+	    socket.on("connected", function() {
+    		$rootScope.$broadcast("SOCKETIO-CONNECTED");
+    		$rootScope.socketioConnected = true;
+    	});
 	    console.log("connecting");
     }
     
