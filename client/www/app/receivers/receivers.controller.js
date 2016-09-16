@@ -1,6 +1,6 @@
 angular.module('RFio.receivers')
 
-.controller('ReceiversCtrl', function($scope, $ionicModal, ReceiversService, LoaderService) {
+.controller('ReceiversCtrl', function($ionicModal, $rootScope, $scope, LoaderService, ReceiversService) {
   
   var _createModal;
   var _updateModal;
@@ -100,6 +100,12 @@ angular.module('RFio.receivers')
   		});
   }
   
-  get();
+  $scope.$on("SOCKETIO-CONNECTED", function() {
+  	get();
+  });
+  
+  if(!!$rootScope.socketioConnected) {
+  	get();
+  }
   
 });

@@ -9,7 +9,8 @@ function onDisconnect(socket) {
 }
 
 // When the user connects.. perform this
-function onConnect(socket, users) {
+function onConnect(socket) {
+	socket.emit("connected");
 	console.log(socket.address + ': CONNECTED');
 }
 
