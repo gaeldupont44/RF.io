@@ -1,14 +1,15 @@
 <ion-view view-title="Ponts" id="view-bridges">
   <ion-content>
     <ion-list>
-    	<ion-item class="item-bridge" ng-repeat="bridge in vm.bridges" ng-click="vm.openUpdateBridgeModal(bridge._id)">
+    	<ion-item class="item-bridge" ng-repeat="bridge in vm.bridges">
+    		<i class="edit ion-compose" ng-click="vm.openUpdateBridgeModal(bridge._id)"></i>
     		<div class="code-receiver" ng-bind="bridge.code_receiver"></div>
-    		<i class="ion-arrow-right-c"></i>
+    		<i class="receiver-to-emitter ion-arrow-right-c"></i>
     		<div class="code-emitter" ng-bind="bridge.code_emitter"></div>
     	</ion-item>
     </ion-list>
   </ion-content>
-  <ion-footer-bar align-title="center" class="bar-balanced">
+  <ion-footer-bar align-title="center" class="bar-positive">
   <h1 ng-click="vm.openCreateBridgeModal()" class="title">Nouveau</h1>
 </ion-footer-bar>
 </ion-view>

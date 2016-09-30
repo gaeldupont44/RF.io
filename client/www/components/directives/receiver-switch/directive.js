@@ -6,7 +6,9 @@ angular.module('RFio')
 		replace: true,
 		restrict: 'E',
 		scope: {
-			ngModel: "="
+			canSwitch: "=",
+			ngModel: "=",
+			showName: "="
 		},
 		templateUrl: 'components/directives/receiver-switch/template.html',
 		controller: 'ReceiverDirectiveCtrl',

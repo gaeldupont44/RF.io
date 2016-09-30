@@ -4,7 +4,7 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-angular.module('RFio', ['ionic', 'btford.socket-io', 'RFio.bridges', 'RFio.receivers'])
+angular.module('RFio', ['ionic', 'angularjs-dropdown-multiselect', 'btford.socket-io', 'RFio.bridges', 'RFio.receivers', 'RFio.rooms'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -53,26 +53,14 @@ angular.module('RFio', ['ionic', 'btford.socket-io', 'RFio.bridges', 'RFio.recei
 	
 })
 .config(function($stateProvider, $urlRouterProvider) {
+	
   $stateProvider
-
 	.state('app', {
 		url: '/app',
 		abstract: true,
 		templateUrl: 'templates/menu.html',
 		controller: 'AppCtrl'
 	})
-	
-    .state('app.receivers', {
-		url: '/receivers',
-		views: {
-	      	'menuContent': {
-				templateUrl: 'app/receivers/receivers.html',
-				controller: 'ReceiversCtrl',
-				controllerAs: 'vm'
-			}
-		}
-	})
-	
 	.state('app.bridges', {
 		url: '/bridges',
 		views: {
@@ -82,7 +70,38 @@ angular.module('RFio', ['ionic', 'btford.socket-io', 'RFio.bridges', 'RFio.recei
 				controllerAs: 'vm'
 			}
 		}
+	})
+	.state('app.receivers', {
+		url: '/receivers',
+		views: {
+	      	'menuContent': {
+				templateUrl: 'app/receivers/receivers.html',
+				controller: 'ReceiversCtrl',
+				controllerAs: 'vm'
+			}
+		}
+	})
+	.state('app.rooms', {
+		url: '/rooms',
+		views: {
+	      	'menuContent': {
+				templateUrl: 'app/rooms/rooms.html',
+				controller: 'RoomsCtrl',
+				controllerAs: 'vm'
+			}
+		}
+	})
+	.state('app.room', {
+		url: '/rooms/:name',
+		views: {
+	      	'menuContent': {
+				templateUrl: 'app/rooms/room/room.html',
+				controller: 'RoomCtrl',
+				controllerAs: 'vm'
+			}
+		}
 	});
+	
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/app/receivers');
 });

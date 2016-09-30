@@ -1,0 +1,30 @@
+<ion-modal-view id="view-rooms-create-modal">
+  <ion-header-bar>
+    <h1 class="title">Créer une salle</h1>
+    <div class="buttons">
+      <button class="button button-assertive" ng-click="vm.closeCreateRoomModal()"><i class="ion-close"></i></button>
+    </div>
+  </ion-header-bar>
+  <ion-content delegate-handle="create-modal">
+    <form ng-submit="vm.create()">
+      <div class="list">
+        <label class="item item-input">
+          <span class="input-label">Nom</span>
+          <input type="text" ng-model="vm.newRoom.name">
+        </label>
+        <label class="item item-input">
+          <span class="input-label">Photo</span>
+          <input-image ng-model="vm.newRoom.picture"></input-image>
+        </label>
+        
+        <map-image ng-if="!!vm.newRoom.picture" map="vm.newRoom.picture" room-objects="vm.selector.data" can-drag="true" can-switch="false" delegate-handle="create-modal"></map-image>
+        
+        <ng-dropdown-multiselect options="vm.selector.options" selected-model="vm.selector.data" translation-texts="vm.selector.translations" extra-settings="vm.selector.settings"></ng-dropdown-multiselect>
+        
+        <label class="item">
+          <button class="button button-block button-balanced" ng-disabled="!vm.newRoom.name || !vm.newRoom.picture" type="submit">Créer</button>
+        </label>
+      </div>
+    </form>
+  </ion-content>
+</ion-modal-view>

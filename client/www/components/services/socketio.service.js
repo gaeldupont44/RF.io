@@ -18,7 +18,6 @@ angular.module('RFio')
     		$rootScope.$broadcast("SOCKETIO-CONNECTED");
     		$rootScope.socketioConnected = true;
     	});
-	    console.log("connecting");
     }
     
     
@@ -26,6 +25,38 @@ angular.module('RFio')
       connect: connect,
       socket: socket,
 
+	  /**
+       * Register listeners to sync an object with updates on a model
+       *
+       * Takes the object we want to sync, the model name that socket updates are sent from,
+       * and an optional callback function after new object are updated.
+       *
+       * @param {String} modelName
+       * @param {Object} object
+       * @param {Function} cb
+       */
+      syncOneUpdates(modelName, obj, cb) {
+        cb = cb || angular.noop;
+        /**
+         * Syncs item creation/updates on 'model:save'
+         */
+        socket.on(modelName + '-' + obj._id + ':save', function (item) {
+          var event = 'updated';
+          _.extend(obj, item);
+          cb(event, item, obj);
+        });
+
+        /**
+         * Syncs removed items on 'model:remove'
+         */
+        socket.on(modelName + '-' + obj._id + ':remove', function (item) {
+          var event = 'deleted';
+          obj = item;
+          cb(event, item, obj);
+        });
+        
+      },
+      
       /**
        * Register listeners to sync an array with updates on a model
        *
@@ -69,9 +100,19 @@ angular.module('RFio')
         });
         
       },
-
+      
+	  /**
+       * Removes listeners for a object model updates on the socket
+       *
+       * @param modelName
+       */
+      unsyncOneUpdates(modelName, obj) {
+        socket.removeAllListeners(modelName + '-' + obj._id + ':save');
+        socket.removeAllListeners(modelName + '-' + obj._id + ':remove');
+      },
+      
       /**
-       * Removes listeners for a models updates on the socket
+       * Removes listeners for an array model updates on the socket
        *
        * @param modelName
        */

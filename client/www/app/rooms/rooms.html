@@ -1,0 +1,14 @@
+<ion-view view-title="Salles" id="view-rooms">
+  <ion-content>
+    <ion-list>
+    	<ion-item class="item-room" ng-repeat="room in vm.rooms">
+    		<i class="edit ion-compose" ng-click="vm.openUpdateRoomModal(room._id)"></i>
+    		<div class="name" ng-bind="room.name" ui-sref="app.room({name: room.name})"></div>
+    		<i class="go-room ion-ios-arrow-forward" ui-sref="app.room({name: room.name})"></i>
+    	</ion-item>
+    </ion-list>
+  </ion-content>
+  <ion-footer-bar align-title="center" class="bar-positive">
+    <h1 ng-click="vm.openCreateRoomModal()" class="title">Nouveau</h1>
+  </ion-footer-bar>
+</ion-view>

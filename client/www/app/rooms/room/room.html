@@ -1,0 +1,5 @@
+<ion-view view-title="{{ vm.roomName }}" id="view-room">
+  <ion-content delegate-handle="use-room">
+    <map-image ng-if="!!vm.room.picture" map="vm.room.picture" room-objects="vm.room.roomObjects" can-drag="false" can-switch="true" delegate-handle="use-room"></map-image>
+  </ion-content>
+</ion-view>

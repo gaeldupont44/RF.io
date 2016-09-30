@@ -1,18 +1,32 @@
 #view-receivers .item-receiver {
 	padding: 0;
+	height: 52px;
+}
+
+#view-receivers .item-receiver .edit {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	font-weight: bold;
+	font-size: 24px;
+	padding: 14px 16px 16px 16px;
 }
 
 #view-receivers .item-receiver .name {
-	padding: 16px;
+	position: absolute;
+	top: 0;
+	right: 80px;
+	bottom: 0;
+	left: 50px;
 	font-weight: bold;
-	padding-right: 80px;
+	padding: 14px 0 16px 0;
 }
 
 #view-receivers .item-receiver .switch-container {
 	position: absolute;
 	top: 0;
-	right: 0;
+	right: 16px;
 	bottom: 0;
-	width: 50px;
-	margin: 1px 15px;
+	font-weight: bold;
 }
