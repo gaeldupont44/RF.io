@@ -8,6 +8,9 @@ var API = {
 		Receiver: "/api/receiver/{id}",
 		ReceiverOff: "/api/receiver/{id}/off",
 		ReceiverOn: "/api/receiver/{id}/on",
-		Receivers: "/api/receiver"
+		Receivers: "/api/receiver",
+		Room: "/api/room/{id}",
+		RoomByName: "/api/room/name/{name}",
+		Rooms: "/api/room"
 	}
 };

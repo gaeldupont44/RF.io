@@ -18,6 +18,7 @@ module.exports = function(socketio) {
 	
   require('./api/bridge/bridge.socketio')(socketio);
   require('./api/receiver/receiver.socketio')(socketio);
+  require('./api/room/room.socketio')(socketio);
   
   socketio.on('connection', function(socket) {
     socket.address = socket.request.connection.remoteAddress +
@@ -28,7 +29,6 @@ module.exports = function(socketio) {
     // Call onDisconnect.
     socket.on('disconnect', () => {
       onDisconnect(socket);
-      console.log('DISCONNECTED');
     });
 
     // Call onConnect.

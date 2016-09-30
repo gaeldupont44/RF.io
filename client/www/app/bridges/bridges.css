@@ -1,23 +1,41 @@
 #view-bridges .item-bridge {
 	padding: 0;
-	height: 50px;
+	height: 52px;
+}
+
+#view-bridges .item-bridge .edit {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	font-weight: bold;
+	font-size: 24px;
+	padding: 14px 16px 16px 16px;
 }
 
 #view-bridges .item-bridge .code-receiver {
 	position: absolute;
-	top: 13px;
-	left: 16px;
+	top: 0;
+	bottom: 0;
+	left: 50px;
+	padding: 14px 0 16px 0;
 }
-#view-bridges .item-bridge i {
+
+#view-bridges .item-bridge .receiver-to-emitter {
 	position: absolute;
-	left: 0;
-	right: 0;
+	top: 0;
+	right: 50px;
+	bottom: 0;
+	left: 50px;
+	padding: 14px 0 16px 0;
 	text-align: center;
-	font-size: 50px;
+	font-size: 24px;
 }
 
 #view-bridges .item-bridge .code-emitter {
 	position: absolute;
-	top: 13px;
+	top: 0;
 	right: 16px;
+	bottom: 0;
+	padding: 14px 0 16px 0;
 }

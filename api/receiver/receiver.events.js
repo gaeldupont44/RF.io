@@ -1,9 +1,9 @@
 'use strict';
-
+const _ = require('lodash');
 const EventEmitter =  require('events');
 const Receiver = require('./receiver.model');
 const ReceiverEvents = new EventEmitter();
-
+const Room = require('./../room/room.model');
 
 // Set max event listeners (0 == unlimited)
 ReceiverEvents.setMaxListeners(0);
@@ -21,8 +21,17 @@ for (var e in events) {
 }
 
 function emitEvent(event) {
-  return function(doc) {
-    ReceiverEvents.emit(event, doc);
+  return function(receiver) {
+  	ReceiverEvents.emit(event, receiver);
+  	Room.find({'roomObjects.receiver': receiver._id}, function(err, rooms) {
+  		if(err) console.error(err);
+  		_(rooms).forEach(function(room) {
+  			if(event === 'remove') {
+  				room.roomObjects.receiver(receiver._id).remove();
+  			}
+  			room.save();
+  		});
+  	});
   };
 }
 

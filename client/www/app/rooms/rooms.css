@@ -1,0 +1,37 @@
+#view-rooms .item-room {
+	padding: 0;
+	height: 52px;
+}
+
+#view-rooms .item-room i {
+	
+	font-size: 24px;
+}
+
+#view-rooms .item-room .edit {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	font-weight: bold;
+	padding: 14px 16px 16px 16px;
+}
+
+#view-rooms .item-room .name {
+	position: absolute;
+	top: 0;
+	right: 50px;
+	bottom: 0;
+	left: 50px;
+	font-weight: bold;
+	padding: 14px 0 16px 0;
+}
+
+#view-rooms .item-room .go-room {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	font-weight: bold;
+	padding: 14px 16px 16px 16px;
+}

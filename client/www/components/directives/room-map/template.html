@@ -1,0 +1,4 @@
+<div class="room-map">
+	<img ng-src="{{ map }}">
+	<room-object can-drag="canDrag" can-switch="canSwitch" ng-model="roomObject" ng-repeat="roomObject in roomObjects" delegate-handle="delegateHandle"></room-object>
+</div>

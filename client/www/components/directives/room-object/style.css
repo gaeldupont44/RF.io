@@ -1,0 +1,7 @@
+.room-object {
+	display: inline-block;
+	opacity: 0;
+	position: absolute;
+	z-index: 1000;
+	transition: all ease-out 100ms;
+}

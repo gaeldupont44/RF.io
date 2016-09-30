@@ -2,14 +2,15 @@
   <ion-content>
     <ion-list>
     	<ion-item class="item-receiver" ng-repeat="receiver in vm.receivers">
-    		<div class="name" ng-click="vm.openUpdateReceiverModal(receiver._id)" ng-bind="receiver.name"></div>
+    		<i class="edit ion-compose" ng-click="vm.openUpdateReceiverModal(receiver._id)"></i>
+    		<div class="name" ng-bind="receiver.name"></div>
     		<div class="switch-container">
-    			<receiver-switch ng-model="receiver"></receiver-switch>
+    			<receiver-switch can-switch="true" show-name="false" ng-model="receiver"></receiver-switch>
     		</div>
     	</ion-item>
     </ion-list>
   </ion-content>
-  <ion-footer-bar align-title="center" class="bar-balanced">
-  <h1 ng-click="vm.openCreateReceiverModal()" class="title">Nouveau</h1>
-</ion-footer-bar>
+  <ion-footer-bar align-title="center" class="bar-positive">
+    <h1 ng-click="vm.openCreateReceiverModal()" class="title">Nouveau</h1>
+  </ion-footer-bar>
 </ion-view>

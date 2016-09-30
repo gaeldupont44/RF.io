@@ -1,1 +1,46 @@
 /* Empty. Add your own CSS if you like */
+
+ng-dropdown-multiselect button {
+	-webkit-appearance: initial;
+	background-color: #0c60ee;
+	width: 100%;
+	border: 0;
+	border-radius: 4px;
+	margin: 0;
+	padding: 8px;
+	font-weight: bold;
+	color: white;
+}
+ng-dropdown-multiselect ul {
+	margin-top: 2px;
+	overflow: hidden !important;
+	border: 1px solid black;
+	border-right: 0;
+	border-left: 0;
+	
+}
+ng-dropdown-multiselect li {
+	text-align: center;
+	border: 1px solid black;
+	border-left: 0;
+	border-right: 0;
+	border-top: 0;
+	padding: 0;
+}
+ng-dropdown-multiselect .divider {
+	border: 1px solid black;
+}
+ng-dropdown-multiselect li a {
+	display: block;
+	padding: 5px 0;
+	color: #0c60ee;
+	font-weight: bold;
+}
+ng-dropdown-multiselect li a .glyphicon-ok {
+	width: 10px;
+    height: 10px;
+    border-radius: 5px;
+    border: 1px solid black;
+    display: inline-block;
+    background-color: green;
+}
