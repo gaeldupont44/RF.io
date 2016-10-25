@@ -1,4 +1,4 @@
 <div class="room-map">
-	<img ng-src="{{ map }}">
-	<room-object can-drag="canDrag" can-switch="canSwitch" ng-model="roomObject" ng-repeat="roomObject in roomObjects" delegate-handle="delegateHandle"></room-object>
+	<img ng-src="data:{{ map.typeMime }};base64,{{map.base64}}">
+	<room-object ng-if="!!mapLoaded" can-drag="canDrag" can-switch="canSwitch" ng-model="roomObject" ng-repeat="roomObject in roomObjects" delegate-handle="delegateHandle"></room-object>
 </div>

@@ -13,11 +13,11 @@ function RoomService(HttpService, SocketioService) {
 		return HttpService.get(API.Routes.RoomByName, {name: roomName});
 	}
 	
-	function syncOneUpdates(room){
-    	SocketioService.syncOneUpdates("room", room);
+	function syncOneUpdates(room, cb){
+    	SocketioService.syncOneUpdates("room", room, cb);
     }
     
-    function unsyncOneUpdates(room) {
+    function unsyncOneUpdates(room, cb) {
 		SocketioService.unsyncOneUpdates("room", room);
     }
 }

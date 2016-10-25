@@ -14,7 +14,11 @@ angular.module('RFio')
 				if (event.target.files && event.target.files[0]) {
 					var reader = new FileReader();
 					reader.onload = function(e) {
-						scope.ngModel = e.target.result;
+						var parseResult = e.target.result.split(";base64,");
+						scope.ngModel = {
+							typeMime: parseResult[0].split("data:")[1],
+							base64: parseResult[1]
+						};
 						scope.$apply();
 					};
 					reader.readAsDataURL( event.target.files[0] );
