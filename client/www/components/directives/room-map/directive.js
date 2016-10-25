@@ -12,6 +12,11 @@ angular.module('RFio')
 			canDrag: '=',
 			canSwitch: '=',
 			delegateHandle: "@"
+		},
+		link: function (scope, element, attr) {
+			element[0].firstElementChild.onload =  function (event) {
+				scope.mapLoaded = true;
+          	};
 		}
 	};
 

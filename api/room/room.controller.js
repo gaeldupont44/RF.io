@@ -13,6 +13,7 @@ exports.getAll = function(req, res) {
 exports.getOne = function(req, res) {
 	Room.findById(req.params.id).populate('roomObjects.receiver').exec(function (err, room) {
 	    if(!!err) { return res({error: err}).code(500); }
+	    room.picture = JSON.parse(room.picture);
 	    return res(room).code(200);
 	  });
 };
@@ -30,7 +31,7 @@ exports.createOne = function(req, res) {
 		if(!!room) {return res({error: "NAME_ALREADY_IN_USE"}).code(409); }
 		room = new Room({
 			name: req.payload.name,
-			picture: req.payload.picture,
+			pictureId: req.payload.pictureId,
 			roomObjects: req.payload.roomObjects || []
 	   	});
 		room.save();

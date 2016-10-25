@@ -28,8 +28,8 @@ function RoomsService(HttpService, SocketioService) {
 		return HttpService.put(API.Routes.Rooms, {}, data);
 	}
 	
-	function syncUpdates(rooms){
-    	SocketioService.syncUpdates("room", rooms);
+	function syncUpdates(rooms, cb){
+    	SocketioService.syncUpdates("room", rooms, cb);
     }
     
     function unsyncUpdates() {

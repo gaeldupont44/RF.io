@@ -5,7 +5,7 @@ const mongoose = require('mongoose'),
  
 const RoomSchema = new Schema({
   name: { type: String, required: true },
-  picture: { type: String, required: true },
+  pictureId: { type: String, required: true },
   roomObjects: [RoomObject.schema]
 });
 

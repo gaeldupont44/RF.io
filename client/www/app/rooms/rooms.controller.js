@@ -1,6 +1,6 @@
 angular.module('RFio.rooms')
 
-.controller('RoomsCtrl', function($ionicModal, $q, $rootScope, $scope, LoaderService, ReceiversService, RoomsService) {
+.controller('RoomsCtrl', function($ionicModal, $q, $rootScope, $scope, LoaderService, PictureService, ReceiversService, RoomsService) {
   
   var _createModal;
   var _updateModal;
@@ -19,7 +19,6 @@ angular.module('RFio.rooms')
     	data: []
     };
     
-  vm.newRoom = {};
   vm.closeCreateRoomModal = closeCreateRoomModal;
   vm.closeUpdateRoomModal = closeUpdateRoomModal;
   vm.create = create;
@@ -69,7 +68,7 @@ angular.module('RFio.rooms')
   function closeCreateRoomModal() {
     _createModal.hide()
     	.then(function() {
-			vm.newRoom = {};
+			vm.room = {};
 		});
   }
   
@@ -90,17 +89,28 @@ angular.module('RFio.rooms')
   			y: roomObject.y
   		});
   	});
-  	vm.newRoom.roomObjects = roomObjects;
-    RoomsService.create(vm.newRoom)
-    	.then(function() {
-    		closeCreateRoomModal();
-    	})
-    	.catch(function(err) {
-    		console.error(err);
-    	})
-    	.finally(function() {
-  			LoaderService.hide();
-  		});
+  	vm.room.roomObjects = roomObjects;
+  	PictureService.create(vm.room.picture)
+  		.then(function(pictureId) {
+  			var newRoom = angular.copy(vm.room);
+  			delete newRoom.picture;
+  			newRoom.pictureId = pictureId;
+  			
+  			RoomsService.create(newRoom)
+		    	.then(function() {
+		    		closeCreateRoomModal();
+		    	})
+		    	.catch(function(err) {
+		    		console.error(err);
+		    	});
+  		})
+  		.catch(function(err) {
+  			console.error(err);
+  		})
+  		.finally(function() {
+	  		LoaderService.hide();
+	  	});
+    	
   }
   
   function del() {
@@ -138,10 +148,21 @@ angular.module('RFio.rooms')
   }
   
   function openUpdateRoomModal(roomId) {
+  	LoaderService.show();
   	vm.room = angular.copy(_.find(vm.rooms, {_id: roomId}));
   	vm.selector.options = _receiversToRoomObjects(angular.copy(vm.receivers));
   	vm.selector.data = angular.copy(_addNameToRoomObjects(vm.room.roomObjects));
-    _updateModal.show();
+  	updatePicture()
+  		.then(function() {
+  			_updateModal.show();
+  		})
+  		.catch(function(err) {
+  			console.error(err);
+  		})
+  		.finally(function() {
+  			LoaderService.hide();
+  		});
+    
   }
   
   function update() {
@@ -165,6 +186,34 @@ angular.module('RFio.rooms')
     	.finally(function() {
   			LoaderService.hide();
   		});
+  }
+  
+  function updatePicture() {
+  	var deferred = $q.defer();
+  	if(!!vm.room.picture) {
+  		if(vm.room.pictureId === vm.room.picture._id) {
+  			deferred.resolve(vm.room.picture);
+  		} else {
+  			PictureService.get(vm.room.pictureId)
+	  			.then(function(picture) {
+	  				vm.room.picture = picture;
+	  				deferred.resolve(vm.room.picture);
+	  			})
+	  			.catch(function(err) {
+	  				deferred.reject(err);
+	  			});
+  		}
+  	} else {
+  		PictureService.get(vm.room.pictureId)
+	  		.then(function(picture) {
+	  			vm.room.picture = picture;
+	  			deferred.resolve(vm.room.picture);
+	  		})
+	  		.catch(function(err) {
+	  			deferred.reject(err);
+	  		});
+  	}
+  	return deferred.promise;
   }
   
   $scope.$on("SOCKETIO-CONNECTED", function() {

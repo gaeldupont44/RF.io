@@ -43,7 +43,7 @@ angular.module('RFio')
         socket.on(modelName + '-' + obj._id + ':save', function (item) {
           var event = 'updated';
           _.extend(obj, item);
-          cb(event, item, obj);
+          cb(event, obj);
         });
 
         /**
@@ -52,7 +52,7 @@ angular.module('RFio')
         socket.on(modelName + '-' + obj._id + ':remove', function (item) {
           var event = 'deleted';
           obj = item;
-          cb(event, item, obj);
+          cb(event, obj);
         });
         
       },
