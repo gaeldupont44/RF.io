@@ -1,6 +1,6 @@
 'use strict';
 angular.module('RFio')
-.directive('mapImage', function($interval){
+.directive('mapImage', function($timeout){
 
 	return {
 		replace: true,
@@ -14,9 +14,16 @@ angular.module('RFio')
 			delegateHandle: "@"
 		},
 		link: function (scope, element, attr) {
+			
 			element[0].firstElementChild.onload =  function (event) {
 				scope.mapLoaded = true;
           	};
+          	
+          	//if onload not fired
+          	$timeout(function() {
+				scope.mapLoaded = true;
+			}, 2000);
+			
 		}
 	};
 
