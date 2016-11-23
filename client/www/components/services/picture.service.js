@@ -32,7 +32,9 @@ function PictureService($q, $rootScope, HttpService, WebsqlService) {
 	};
 	
 	function create(data) {
-		return HttpService.post(API.Routes.Pictures, {}, data);
+		var fd = new FormData();
+        fd.append('file', data);
+		return HttpService.upload(API.Routes.Pictures, {}, fd);
 	}
 	
 	function del(id) {

@@ -46,7 +46,7 @@ exports.updateOne = function(req, res) {
 		Room.find({name: req.payload.name}, function(err, rooms) {
 			if(rooms.length === 0 || (rooms.length === 1 && rooms[0]._id.toString() === req.payload._id)) {
 				room.name = req.payload.name;
-				room.picture = req.payload.picture;
+				room.pictureId = req.payload.pictureId;
 				room.roomObjects = req.payload.roomObjects;
 				room.save();
 				return res().code(204);

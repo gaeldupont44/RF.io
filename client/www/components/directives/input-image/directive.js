@@ -6,7 +6,8 @@ angular.module('RFio')
 		replace: false,
 		restrict: 'E',
 		scope: {
-			ngModel: "="
+			ngModel: "=",
+			ngFile: "="
 		},
 		templateUrl: 'components/directives/input-image/template.html',
 		link: function(scope, element, attrs) {
@@ -19,8 +20,10 @@ angular.module('RFio')
 							typeMime: parseResult[0].split("data:")[1],
 							base64: parseResult[1]
 						};
+						scope.ngFile = event.target.files[0];
 						scope.$apply();
 					};
+					
 					reader.readAsDataURL( event.target.files[0] );
 				}
 			});

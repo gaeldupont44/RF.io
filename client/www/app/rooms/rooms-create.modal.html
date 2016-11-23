@@ -14,7 +14,7 @@
         </label>
         <label class="item item-input">
           <span class="input-label">Photo</span>
-          <input-image ng-model="vm.room.picture"></input-image>
+          <input-image ng-model="vm.room.picture" ng-file="vm.room.pictureFile"></input-image>
         </label>
         
         <map-image ng-if="!!vm.room.picture" map="vm.room.picture" room-objects="vm.selector.data" can-drag="true" can-switch="false" delegate-handle="create-modal"></map-image>
