@@ -10,7 +10,8 @@ function HttpService($http) {
   		delete: del,
   		get: get,
   		post: post,
-  		put: put
+  		put: put,
+  		upload: upload
   	};
   	
   	function checkAPI() {
@@ -73,4 +74,18 @@ function HttpService($http) {
 		 });
   	}
   	
+  	function upload(url, params, data){
+  		return $http({
+		    url: parseUrl(url, params), 
+		    method: "POST",
+		    data: data,
+		    headers : {
+	    		'Content-Type' : undefined
+	   		},
+	 		transformRequest : angular.identity
+  		})
+		 .then(function(response) {
+		 	return response.data;
+		 });
+  	}
 }

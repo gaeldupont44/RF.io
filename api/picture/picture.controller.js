@@ -12,8 +12,8 @@ exports.get = function(req, res) {
 
 exports.create = function(req, res) {
 		var picture = new Picture({
-			typeMime: req.payload.typeMime,
-			base64: req.payload.base64
+			typeMime: req.payload.file.hapi.headers['content-type'],
+			base64: new Buffer(req.payload.file._data).toString('base64')
 	   	});
 		picture.save();
 		return res(picture._id).code(201);
