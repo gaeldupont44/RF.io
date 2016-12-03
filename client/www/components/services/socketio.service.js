@@ -8,7 +8,7 @@ angular.module('RFio')
     var socket;
     
     function connect() {
-    	ioSocket = io((API.Host ? API.Host + (API.Port ? ":" + API.Port : "") : ""), {
+    	ioSocket = io(((!!API.Host && API.Host.length > 0 ) ? API.Host + ((!!API.Port && API.Port.toString().length > 0) ? ":" + API.Port : "") : ""), {
 	      path: '/socket.io-client'
 	    });
 	    

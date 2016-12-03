@@ -49,7 +49,7 @@ function HttpService($http) {
 				});
 			}
 		}
-		return (API.Host ? API.Host + (API.Port ? ":" + API.Port : "") : "") + url;
+		return ((!!API.Host && API.Host.length > 0 ) ? API.Host + ((!!API.Port && API.Port.toString().length > 0) ? ":" + API.Port : "") : "") + url;
 	}
 	
   	function post(url, params, data){
