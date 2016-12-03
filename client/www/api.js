@@ -1,6 +1,6 @@
 var API = {
-	Host: "http://91.121.86.34",
-	Port: 8888,
+	Host: "",
+	Port: 80,
 	Routes: {
 		Bridge: "/api/bridge/{id}",
 		Bridges: "/api/bridge",

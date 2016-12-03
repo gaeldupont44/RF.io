@@ -5,13 +5,12 @@
 
 // When the user disconnects.. perform this
 function onDisconnect(socket) {
-	console.log("socket disconnected");
+	//disconnected
 }
 
 // When the user connects.. perform this
 function onConnect(socket) {
 	socket.emit("connected");
-	console.log(socket.address + ': CONNECTED');
 }
 
 module.exports = function(socketio) {
