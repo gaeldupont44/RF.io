@@ -181,7 +181,9 @@ angular.module('RFio.rooms')
   		});
   	});
   	vm.room.roomObjects = roomObjects;
-  	createPicture(vm.room.pictureFile)
+  	
+  	if(!!vm.room.pictureFile) {
+  		createPicture(vm.room.pictureFile)
   		.then(function(pictureId) {
   			var updateRoom = angular.copy(vm.room);
   			delete updateRoom.picture;
@@ -205,6 +207,21 @@ angular.module('RFio.rooms')
   		.finally(function() {
 	  		LoaderService.hide();
 	  	});
+  	} else {
+  		var updateRoom = angular.copy(vm.room);
+  		delete updateRoom.picture;
+  		RoomsService.update(vm.room)
+		    .then(function() {
+		    	closeUpdateRoomModal();
+		    })
+		    .catch(function(err) {
+		    	console.error(err);
+		    })
+		    .finally(function() {
+		  		LoaderService.hide();
+		  	});
+  	}
+  	
   }
   
   function updatePicture() {

@@ -10,18 +10,18 @@
       <div class="list">
       	<label class="item item-input">
           <span class="input-label">Nom</span>
-          <input type="text" ng-model="vm.newReceiver.name">
+          <input type="text" ng-model="vm.receiver.name">
         </label>
         <label class="item item-input">
           <span class="input-label">Code ON</span>
-          <input type="number" ng-model="vm.newReceiver.code_on">
+          <input type="number" ng-model="vm.receiver.code_on">
         </label>
         <label class="item item-input">
           <span class="input-label">Code OFF</span>
-          <input type="number" ng-model="vm.newReceiver.code_off">
+          <input type="number" ng-model="vm.receiver.code_off">
         </label>
         <label class="item">
-          <button class="button button-block button-balanced" ng-disabled="!vm.newReceiver.name.length || !vm.newReceiver.code_on || !vm.newReceiver.code_off" type="submit">Créer</button>
+          <button class="button button-block button-balanced" ng-disabled="!vm.receiver.name.length || !vm.receiver.code_on || !vm.receiver.code_off" type="submit">Créer</button>
         </label>
       </div>
     </form>

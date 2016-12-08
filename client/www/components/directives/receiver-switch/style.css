@@ -10,16 +10,16 @@
 	left: 0;
 	width: 50px;
 	height: 50px;
-	border-radius: 10%;
-	border: 3px solid black;
+	border-radius: 50%;
+	border: 2px solid black;
 }
 
 .receiver-switch .switch-default.on{
-	background-color: #33cd5f;
+	background-color: lightBlue;
 }
 
 .receiver-switch .switch-default.off{
-	background-color: darkGreen;
+	background-color: navy;
 }
 
 .receiver-switch .switch-name {
@@ -28,6 +28,6 @@
 	top: 15%;
 	right: 0;
 	text-align: center;
-	font-weight: bold;
-	color: navy;
+	font-weight: 700;
+	color: red;
 }

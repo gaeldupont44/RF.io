@@ -6,7 +6,7 @@ angular.module('RFio.receivers')
   var _updateModal;
   
   var vm = this;
-  vm.newReceiver = {};
+  vm.receiver = {};
   vm.closeCreateReceiverModal = closeCreateReceiverModal;
   vm.closeUpdateReceiverModal = closeUpdateReceiverModal;
   vm.create = create;
@@ -39,7 +39,7 @@ angular.module('RFio.receivers')
   
   function create() {
   	LoaderService.show();
-    ReceiversService.create(vm.newReceiver)
+    ReceiversService.create(vm.receiver)
     	.then(function() {
     		closeCreateReceiverModal();
     	})
@@ -52,7 +52,6 @@ angular.module('RFio.receivers')
   }
   
   function del() {
-  	console.log("deleting");
   	LoaderService.show();
     ReceiversService.delete(vm.receiver._id)
     	.then(function() {
@@ -78,6 +77,7 @@ angular.module('RFio.receivers')
   }
   
   function openCreateReceiverModal() {
+  	vm.receiver = {};
     _createModal.show();
   }
   

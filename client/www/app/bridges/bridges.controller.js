@@ -6,7 +6,7 @@ angular.module('RFio.bridges')
   var _updateModal;
   
   var vm = this;
-  vm.newBridge = {};
+  vm.bridge = {};
   vm.closeCreateBridgeModal = closeCreateBridgeModal;
   vm.closeUpdateBridgeModal = closeUpdateBridgeModal;
   vm.create = create;
@@ -39,7 +39,7 @@ angular.module('RFio.bridges')
   
   function create() {
   	LoaderService.show();
-    BridgesService.create(vm.newBridge)
+    BridgesService.create(vm.bridge)
     	.then(function() {
     		closeCreateBridgeModal();
     	})
@@ -77,6 +77,7 @@ angular.module('RFio.bridges')
   }
   
   function openCreateBridgeModal() {
+  	vm.bridge = {};
     _createModal.show();
   }
   

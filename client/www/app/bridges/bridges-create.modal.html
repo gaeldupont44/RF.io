@@ -10,14 +10,14 @@
       <div class="list">
         <label class="item item-input">
           <span class="input-label">Code à recevoir</span>
-          <input type="number" ng-model="vm.newBridge.code_receiver">
+          <input type="number" ng-model="vm.bridge.code_receiver">
         </label>
         <label class="item item-input">
           <span class="input-label">Code à émettre</span>
-          <input type="number" ng-model="vm.newBridge.code_emitter">
+          <input type="number" ng-model="vm.bridge.code_emitter">
         </label>
         <label class="item">
-          <button class="button button-block button-balanced" ng-disabled="!vm.newBridge.code_receiver || !vm.newBridge.code_emitter" type="submit">Créer</button>
+          <button class="button button-block button-balanced" ng-disabled="!vm.bridge.code_receiver || !vm.bridge.code_emitter" type="submit">Créer</button>
         </label>
       </div>
     </form>
