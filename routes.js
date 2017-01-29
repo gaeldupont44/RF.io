@@ -10,4 +10,5 @@ module.exports = function(server) {
 	server.route(require('./api/picture'));
 	server.route(require('./api/receiver'));
 	server.route(require('./api/room'));
+	server.route(require('./api/speech'));
 };

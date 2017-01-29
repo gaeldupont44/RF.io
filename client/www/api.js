@@ -13,6 +13,7 @@ var API = {
 		Receivers: "/api/receiver",
 		Room: "/api/room/{id}",
 		RoomByName: "/api/room/name/{name}",
-		Rooms: "/api/room"
+		Rooms: "/api/room",
+		Speech: "/api/speech/{speech}"
 	}
 };

@@ -4,7 +4,7 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-angular.module('RFio', ['ionic', 'angularjs-dropdown-multiselect', 'angular-websql', 'btford.socket-io', 'RFio.bridges', 'RFio.receivers', 'RFio.rooms'])
+angular.module('RFio', ['ionic', 'angularjs-dropdown-multiselect', 'angular-websql', 'btford.socket-io', 'gd-speech', 'RFio.bridges', 'RFio.receivers', 'RFio.rooms'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -21,13 +21,29 @@ angular.module('RFio', ['ionic', 'angularjs-dropdown-multiselect', 'angular-webs
     }
   });
 })
-.controller('AppCtrl', function($ionicPopup, $scope, HttpService, SocketioService, LoaderService) {
+.controller('AppCtrl', function($ionicPopup, $scope, HttpService, SocketioService, SpeechService, LoaderService) {
 	var _popup;
 	
 	var vm = this;
 	vm.checkAPI = checkAPI;
-	
-	
+	vm.speech = {
+		config: {
+			continuous: false,
+	    	interimResults: true
+		},
+		value: {
+			interim: '',
+			complete: ''
+		},
+		recognizing: false
+	};
+	vm.speechProcess = function() {
+		LoaderService.show();
+		SpeechService.process(vm.speech.value.complete)
+			.finally(function() {
+				LoaderService.hide();	
+			});
+	};
 	var popupData = {
 	    template: 'Impossible de se connecter au serveur.',
 	    title: 'Erreur réseau',
@@ -59,7 +75,8 @@ angular.module('RFio', ['ionic', 'angularjs-dropdown-multiselect', 'angular-webs
 		url: '/app',
 		abstract: true,
 		templateUrl: 'templates/menu.html',
-		controller: 'AppCtrl'
+		controller: 'AppCtrl',
+		controllerAs: 'appVM'
 	})
 	.state('app.bridges', {
 		url: '/bridges',

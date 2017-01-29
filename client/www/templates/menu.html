@@ -8,10 +8,14 @@
         <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
         </button>
       </ion-nav-buttons>
+      
+      <ion-nav-buttons side="right">
+        <gd-speech ng-model="appVM.speech" on-gd-speech-complete="appVM.speechProcess()"></gd-speech>
+      </ion-nav-buttons>
     </ion-nav-bar>
     <ion-nav-view name="menuContent"></ion-nav-view>
   </ion-side-menu-content>
-
+  <gd-speech-modal ng-model="appVM.speech"></gd-speech-modal>
   <ion-side-menu side="left">
     <ion-header-bar class="bar-stable">
       <h1 class="title">Menu</h1>

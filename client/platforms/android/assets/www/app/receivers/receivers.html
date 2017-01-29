@@ -1,0 +1,20 @@
+<ion-view view-title="Récepteurs" id="view-receivers">
+  <ion-content>
+    <ion-list>
+    	<ion-item class="item-receiver" ng-repeat="receiver in vm.receivers">
+    		<i class="edit ion-compose" ng-click="vm.openUpdateReceiverModal(receiver._id)"></i>
+    		<div class="name" ng-bind="receiver.name"></div>
+    		<div class="switch-container">
+    			<receiver-switch can-switch="true" show-name="false" ng-model="receiver"></receiver-switch>
+    		</div>
+    	</ion-item>
+    	<ion-item>
+    		<gd-speech ng-model="vm.speech"></gd-speech>
+    		<input type="text" class="form-control" ng-model="vm.speech.value"/>
+    	</ion-item>
+    </ion-list>
+  </ion-content>
+  <ion-footer-bar align-title="center" class="bar-positive">
+    <h1 ng-click="vm.openCreateReceiverModal()" class="title">Nouveau</h1>
+  </ion-footer-bar>
+</ion-view>

@@ -6,7 +6,7 @@ var routes = [
 		{
 		    method: 'GET',
 		    path: '/api/receiver',
-		    handler: controller.getAll
+		    handler: controller.requestGetAll
 		},
 		{
 	        method: 'GET',

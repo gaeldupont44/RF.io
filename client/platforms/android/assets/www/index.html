@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title></title>
+
+    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    
+    <link href="components/directives/input-image/style.css" rel="stylesheet">
+    <link href="components/directives/room-map/style.css" rel="stylesheet">
+    <link href="components/directives/room-object/style.css" rel="stylesheet">
+    <link href="components/directives/receiver-switch/style.css" rel="stylesheet">
+    
+    <link href="app/bridges/bridges.css" rel="stylesheet">
+	<link href="app/receivers/receivers.css" rel="stylesheet">
+	<link href="app/rooms/rooms.css" rel="stylesheet">
+	
+	
+    <!-- ionic/angularjs js -->
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+    <script src="lib/angular-websql/angular-websql.js"></script>
+    <script src="lib/socket.io-client/socket.io.js"></script>
+	<script src="lib/angular-socket-io/socket.js"></script>
+	<script src="lib/lodash/dist/lodash.js"></script>
+	<script src="lib/angularjs-dropdown-multiselect/src/angularjs-dropdown-multiselect.js"></script>
+	
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="cordova.js"></script>
+
+
+    <!-- your app's js -->
+    <script src="api.js"></script>
+    <script src="app.js"></script>
+    <script src="app.constants.js"></script>
+    
+    
+    <!-- Directives -->
+    <script src="components/directives/input-image/directive.js"></script>
+    <script src="components/directives/room-map/directive.js"></script>
+    <script src="components/directives/room-object/directive.js"></script>
+    <script src="components/directives/receiver-switch/controller.js"></script>
+    <script src="components/directives/receiver-switch/directive.js"></script>
+    <script src="components/directives/receiver-switch/service.js"></script>
+    <script src="components/directives/gd-speech/directive.js"></script>
+    <script src="components/directives/gd-speech/factory.js"></script>
+    
+    <!-- Services -->
+    <script src="components/services/http.service.js"></script>
+    <script src="components/services/loader.service.js"></script>
+    <script src="components/services/picture.service.js"></script>
+    <script src="components/services/socketio.service.js"></script>
+    <script src="components/services/websql.service.js"></script>
+    
+    
+    <!-- Bridges -->
+    <script src="app/bridges/bridges.module.js"></script>
+    <script src="app/bridges/bridges.service.js"></script>
+    <script src="app/bridges/bridges.controller.js"></script>
+    
+    
+    <!-- Receivers -->
+    <script src="app/receivers/receivers.module.js"></script>
+    <script src="app/receivers/receivers.service.js"></script>
+    <script src="app/receivers/receivers.controller.js"></script>
+
+    
+    <!-- Rooms -->
+    <script src="app/rooms/rooms.module.js"></script>
+    <script src="app/rooms/rooms.service.js"></script>
+    <script src="app/rooms/rooms.controller.js"></script>
+    <script src="app/rooms/room/room.service.js"></script>
+    <script src="app/rooms/room/room.controller.js"></script>
+    
+  </head>
+
+
+  <body ng-app="RFio" class="platform-android platform-cordova platform-webview">
+    <ion-nav-view></ion-nav-view>
+  </body>
+  
+</html>

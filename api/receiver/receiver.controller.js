@@ -2,12 +2,19 @@
 const Receiver = require('./receiver.model');
 const process = require('./receiver.process');
 
-exports.getAll = function(req, res) {
-	Receiver.find({}, function (err, receivers) {
+exports.requestGetAll = requestGetAll;
+exports.getAll = getAll;
+
+function requestGetAll(req, res) {
+	getAll(function (err, receivers) {
 	    if(!!err) { return res({error: err}).code(500); }
 	    return res(receivers).code(200);
 	  });
-};
+}
+
+function getAll(callback) {
+	Receiver.find({}, callback);
+}
 
 exports.getOne = function(req, res) {
 	Receiver.findById(req.params.id, function (err, receiver) {
