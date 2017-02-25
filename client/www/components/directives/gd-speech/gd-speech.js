@@ -89,16 +89,19 @@
             while (i < event.results.length) {
               result = event.results[i][0];
               trans = gdSpeechFactory.capitalize(result.transcript);
-              safeApply(function () {
-                $scope.ngModel.value.interim = trans;
-                return $scope.ngModel.recognizing = true;
-              });
+              
               if (event.results[i].isFinal) {
                 safeApply(function () {
                   $scope.ngModel.value.complete = trans;
+                  $scope.ngModel.value.interim = null;
                   $scope.onGdSpeechComplete();
                   return $scope.ngModel.recognizing = false;
                 });
+              } else {
+              	safeApply(function () {
+                $scope.ngModel.value.interim = trans;
+                return $scope.ngModel.recognizing = true;
+              });
               }
               _results.push(++i);
             }

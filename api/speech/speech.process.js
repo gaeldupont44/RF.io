@@ -9,6 +9,8 @@ function full(speech, callback) {
 	var executor = speechDictonnary.getExecutor();
 	if(!!executor) {
 		exec(speech, executor, callback);
+	} else {
+		callback(new Error("No Executor found"));
 	}
 }
 
@@ -17,16 +19,17 @@ function exec(speech, executor, callback) {
 	receiverCtrl.getAll(function(err, receivers) {
 		if(!!err) {
 			callback(err);
-		} else {
-			for(var receiverIdx = 0, receiversLen = receivers.length ; receiverIdx < receiversLen ; receiverIdx++) {
-				if(speechDictonnary.find(receivers[receiverIdx].name)) {
-					switch(executor) {
-						case "Start": receiverProcess.emit(receivers[receiverIdx].code_on, callback); return;
-						case "Stop": receiverProcess.emit(receivers[receiverIdx].code_off, callback); return;
-					}
+			return;
+		}
+		for(var receiverIdx = 0, receiversLen = receivers.length ; receiverIdx < receiversLen ; receiverIdx++) {
+			if(speechDictonnary.find(receivers[receiverIdx].name)) {
+				switch(executor) {
+					case "Start": receiverProcess.emit(receivers[receiverIdx].code_on, callback); return;
+					case "Stop": receiverProcess.emit(receivers[receiverIdx].code_off, callback); return;
 				}
 			}
-			callback(null);
 		}
+		callback(null);
+		return;
 	});
 }
